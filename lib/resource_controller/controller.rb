@@ -36,25 +36,25 @@ module ResourceController
           show do
             wants.html
 
-            failure.wants.html { render :text => "Member object not found." }
+            failure.wants.html { render :text => ResourceController::FlashMessages.flash_messages[:show_failed] }
           end
 
           create do
-            flash "Successfully created!"
+            flash ResourceController::FlashMessages.flash_messages[:create]
             wants.html { redirect_to object_url }
 
             failure.wants.html { render :action => "new" }
           end
 
           update do
-            flash "Successfully updated!"
+            flash ResourceController::FlashMessages.flash_messages[:update]
             wants.html { redirect_to object_url }
 
             failure.wants.html { render :action => "edit" }
           end
 
           destroy do
-            flash "Successfully removed!"
+            flash ResourceController::FlashMessages.flash_messages[:destroy]
             wants.html { redirect_to collection_url }
           end
           
